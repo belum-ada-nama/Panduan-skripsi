@@ -1,0 +1,138 @@
+{
+    "tools": [
+      {
+        "category": "Publikasi dan Riset",
+        "title": "Publish or Perish",
+        "description": "Perangkat lunak untuk menganalisis sitasi dan metrik publikasi dari berbagai sumber data.",
+        "url": "https://harzing.com/resources/publish-or-perish",
+        "url_svg": "https://harzing.com/resources/publish-or-perish/logo.svg"
+      },
+      {
+        "category": "Publikasi dan Riset",
+        "title": "NotebookLM",
+        "description": "Alat berbasis AI untuk membantu memahami dan mensintesis informasi dari berbagai sumber, termasuk dokumen dan catatan.",
+        "url": "https://notebooklm.google/",
+        "url_svg": "https://notebooklm.google/favicon.ico"
+      },
+      {
+        "category": "Publikasi dan Riset",
+        "title": "Mendeley",
+        "description": "Aplikasi manajemen referensi yang populer untuk mengatur, mensitasi, dan berbagi penelitian.",
+        "url": "https://www.mendeley.com/",
+        "url_svg": "https://www.mendeley.com/favicon.ico"
+      },
+      {
+        "category": "Publikasi dan Riset",
+        "title": "Connected Papers",
+        "description": "Visualisasi koneksi antar makalah penelitian, membantu menemukan literatur terkait.",
+        "url": "https://www.connectedpapers.com/",
+        "url_svg": "https://www.connectedpapers.com/favicon.ico"
+      },
+      {
+        "category": "Publikasi dan Riset",
+        "title": "VOSviewer",
+        "description": "Perangkat lunak untuk membangun dan memvisualisasikan jaringan bibliometrik.",
+        "url": "https://www.vosviewer.com/",
+        "url_svg": "https://www.vosviewer.com/favicon.ico"
+      },
+      {
+        "category": "Review",
+        "title": "Scispace",
+        "description": "Platform untuk memformat makalah penelitian secara otomatis sesuai dengan berbagai gaya jurnal dan membantu meningkatkan kualitas tulisan.",
+        "url": "https://typeset.io/",
+        "url_svg": "https://typeset.io/favicon.ico"
+      },
+      {
+        "category": "Latar Belakang, Hasil, dan Metodologi",
+        "title": "Claude",
+        "description": "Model bahasa AI yang dapat membantu dalam berbagai tugas penulisan, termasuk menghasilkan teks, meringkas, dan menerjemahkan.",
+        "url": "https://claude.ai/",
+        "url_svg": "https://claude.ai/favicon.ico"
+      },
+      {
+        "category": "Latar Belakang, Hasil, dan Metodologi",
+        "title": "Perplexity AI",
+        "description": "Mesin pencari berbasis AI yang memberikan jawaban langsung dan kutipan sumber, berguna untuk riset dan penulisan.",
+        "url": "https://www.perplexity.ai/",
+        "url_svg": "https://www.perplexity.ai/favicon.ico"
+      },
+      {
+        "category": "Latar Belakang, Hasil, dan Metodologi",
+        "title": "ChatGPT",
+        "description": "Alat berbasis AI untuk berkomunikasi, berdiskusi, dan membantu penulisan.",
+        "url": "https://chat.openai.com/",
+        "url_svg": "https://chat.openai.com/favicon.ico"
+      },
+      {
+        "category": "Desain dan Presentasi",
+        "title": "Figma",
+        "description": "Alat desain berbasis web yang memungkinkan kolaborasi untuk membuat prototipe dan desain antarmuka pengguna.",
+        "url": "https://www.figma.com/",
+        "url_svg": "https://www.figma.com/favicon.ico"
+      },
+      {
+        "category": "Desain dan Presentasi",
+        "title": "Eraser.io",
+        "description": "Alat untuk menghapus latar belakang gambar secara otomatis.",
+        "url": "https://www.eraser.io/",
+        "url_svg": "https://www.eraser.io/favicon.ico"
+      },
+      {
+        "category": "Desain dan Presentasi",
+        "title": "Canva",
+        "description": "Platform desain grafis berbasis web untuk membuat poster, presentasi, dan berbagai desain lainnya.",
+        "url": "https://www.canva.com/",
+        "url_svg": "https://www.canva.com/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "GitHub Copilot",
+        "description": "Asisten pemrograman berbasis AI yang membantu menulis kode lebih cepat.",
+        "url": "https://copilot.github.com/",
+        "url_svg": "https://copilot.github.com/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "Amazon Q",
+        "description": "Platform analisis data dari Amazon yang menggunakan AI untuk memberikan wawasan dan solusi.",
+        "url": "https://aws.amazon.com/q/",
+        "url_svg": "https://aws.amazon.com/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "Kaggle",
+        "description": "Platform kompetisi data science yang juga menyediakan dataset, kernel, dan komunitas untuk riset data.",
+        "url": "https://www.kaggle.com/",
+        "url_svg": "https://www.kaggle.com/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "Google Colab",
+        "description": "Platform untuk menjalankan kode Python di cloud, memungkinkan pemrograman berbasis notebook.",
+        "url": "https://colab.research.google.com/",
+        "url_svg": "https://colab.research.google.com/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "Roboflow",
+        "description": "Platform untuk membangun model visi komputer dengan mudah menggunakan AI.",
+        "url": "https://roboflow.com/",
+        "url_svg": "https://roboflow.com/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "Hugging Face",
+        "description": "Platform untuk model pembelajaran mesin dan AI dengan berbagai model yang dapat digunakan langsung.",
+        "url": "https://huggingface.co/",
+        "url_svg": "https://huggingface.co/favicon.ico"
+      },
+      {
+        "category": "Pemrograman dan Data Science",
+        "title": "AI Studio",
+        "description": "Platform pengembangan AI dari Google untuk eksperimen dan pelatihan model AI.",
+        "url": "https://aistudio.google.com/",
+        "url_svg": "https://aistudio.google.com/favicon.ico"
+      }
+    ]
+  }
+  

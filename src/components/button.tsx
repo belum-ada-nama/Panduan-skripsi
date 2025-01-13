@@ -1,41 +1,40 @@
-import React from 'react';
 
-type ButtonProps = {
-  label: string;
-  onClick: () => void;
-  disabled?: boolean;
-  variant?: 'primary' | 'secondary';
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right' | 'center'; 
-};
+import { ButtonHTMLAttributes, ForwardedRef, forwardRef } from 'react';
+import clsx from 'clsx';
 
-const Button: React.FC<ButtonProps> = ({
-  label,
-  onClick,
-  disabled = false,
-  variant = 'primary',
-  icon,
-  iconPosition = 'left',
-}) => {
-  const baseStyles = 'px-4 py-2 rounded-md focus:outline-none transition duration-200 font-bold flex items-center justify-center';
-  const primaryStyles = 'border-2 rounded-md text-white hover:bg-blue-600 disabled:bg-blue-300';
-  const secondaryStyles = 'bg-gray-500 text-white hover:bg-gray-600 disabled:bg-gray-300';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'outline'; 
+  size?: 'small' | 'medium' | 'large';
+}
 
-  const buttonStyles = variant === 'primary' ? primaryStyles : secondaryStyles;
+const Button = forwardRef(
+  (
+    { variant = 'primary', size = 'medium', className, children, ...props }: ButtonProps,
+    ref: ForwardedRef<HTMLButtonElement>
+  ) => {
+    const buttonClass = clsx(
+      'inline-flex items-center justify-center rounded-md font-semibold transition-all focus:outline-none disabled:opacity-50', 
+      {
+        
+        'bg-white text-black': variant === 'primary',
+        'text-white border border-white': variant === 'secondary',
+        'border border-gray-500 text-gray-500 hover:bg-gray-100': variant === 'outline',
 
-  // Menentukan arah layout dengan flex
-  const iconPositionStyles = iconPosition === 'left' ? 'flex-row' : iconPosition === 'right' ? 'flex-row-reverse' : 'flex-col';
+        'px-6 py-3 text-sm': size === 'small',
+        'px-6 py-3 text-base': size === 'medium',
+        'px-8 py-4 text-lg': size === 'large',
+      },
+      className
+    );
 
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`${baseStyles} ${buttonStyles} ${iconPositionStyles} ${disabled ? 'cursor-not-allowed' : ''}`}
-    >
-      {icon && (typeof icon === 'string' ? <img src={icon} className="mr-2"/> : icon)}
-      <span>{label}</span>
-    </button>
-  );
-};
+    return (
+      <button ref={ref} className={buttonClass}  {...props}>
+        {children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';
 
 export default Button;

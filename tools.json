@@ -1,0 +1,89 @@
+{
+  "tools": [
+    {
+      "category": "Riset",
+      "title": "Publish or Perish"
+   
+    },
+    {
+      "category": "Riset",
+      "title": "NotebookLM"
+
+    },
+    {
+      "category": "Riset",
+      "title": "Mendeley"
+    },
+    {
+      "category": "Riset",
+      "title": "Connected Papers"
+
+    },
+    {
+      "category": "Riset",
+      "title": "VOSviewer"
+
+    },
+    {
+      "category": "Review",
+      "title": "Scispace"
+
+    },
+    {
+      "category": "Penulisan",
+      "title": "Claude"
+ 
+    },
+    {
+      "category": "Penulisan",
+      "title": "Perplexity AI"
+
+    },
+    {
+      "category": "Penulisan",
+      "title": "ChatGPT"
+
+    },
+    {
+      "category": "Desain",
+      "title": "Figma"
+
+    },
+    {
+      "category": "Desain",
+      "title": "Eraser.io"
+    },
+    {
+      "category": "Desain",
+      "title": "Canva"
+    },
+    {
+      "category": "Machine learning",
+      "title": "GitHub Copilot"
+    },
+    {
+      "category": "Machine learning",
+      "title": "Amazon Q"
+    },
+    {
+      "category": "Machine learning",
+      "title": "Kaggle"
+    },
+    {
+      "category": "Machine learning",
+      "title": "Google Colab"
+    },
+    {
+      "category": "Machine learning",
+      "title": "Roboflow"
+    },
+    {
+      "category": "Machine learning",
+      "title": "Hugging Face"
+    },
+    {
+      "category": "Machine learning",
+      "title": "AI Studio"
+    }
+  ]
+}

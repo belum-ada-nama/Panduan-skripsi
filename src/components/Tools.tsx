@@ -12,7 +12,7 @@ const Tools: React.FC = () => {
   const [data, setData] = useState<Data[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>('Publikasi dan Riset'); // Default to 'Publikasi dan Riset'
+  const [selectedCategory, setSelectedCategory] = useState<string | null>('Publikasi dan Riset');
 
   useEffect(() => {
     const fetchJsonData = async () => {

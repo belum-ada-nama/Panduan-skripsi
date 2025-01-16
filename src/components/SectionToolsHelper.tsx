@@ -19,7 +19,7 @@ import IconAIStudio from "../assets/iconTools/aistudiogoogle.svg"
 import IconSpotify from "../assets/iconTools/spotify.svg"
 import IconYoutubeMusic from "../assets/iconTools/youtube_music.svg"
 import { FaArrowRightLong } from "react-icons/fa6";
-
+import { forwardRef } from "react";
 const toolCategories = [
     {
         title: "Publikasi dan Riset",
@@ -84,54 +84,57 @@ const toolCategories = [
         ],
     },
 ];
-
-function SectionToolsHelper() {
+interface SectionToolsHelperProps {
+    ref?: React.RefObject<HTMLDivElement>;
+  }
+ 
+const SectionToolsHelper = forwardRef<HTMLDivElement, SectionToolsHelperProps>((_, ref) => {
     return (
-        <div>
-            <div className="text-center  px-6 py-14 space-y-6 lg:w-[1051px] mx-auto">
-                <SectionTitle
-                    title="Tools Helper Skripsi"
-                    description="Platform atau aplikasi AI yang dirancang untuk membantu mahasiswa dalam menyelesaikan Skripsi dengan lebih efisien dan terorganisir"
-                />
-            </div>
-
-            <div className="px-6 columns-1 md:columns-2 space-y-6">
-                {toolCategories.map((category, index) => (
-                    <div
-                        key={index}
-                        className="break-inside-avoid  p-6 rounded-xl space-y-6 bg-gray-900"
-                    >
-                        <h2 className="text-xl text-center font-bold">
-                            {category.title}
-                        </h2>
-                        <div className="space-y-4">
-                            {category.tools.map((tool, idx) => (
-                                <ListIcon key={idx} title={tool.title} icon={tool.icon} link={tool.link} />
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
+      <div ref={ref} className="w-full pb-20 bg-[#060A16]">
+        <div className="text-center px-6 py-14 space-y-6 lg:w-[1051px] mx-auto">
+          <SectionTitle
+            title="Tools Helper Skripsi"
+            description="Platform atau aplikasi AI yang dirancang untuk membantu mahasiswa dalam menyelesaikan Skripsi dengan lebih efisien dan terorganisir"
+          />
         </div>
+  
+        <div className="px-6 columns-1 md:columns-2 space-y-6">
+          {toolCategories.map((category, index) => (
+            <div
+              key={index}
+              className="break-inside-avoid p-6 rounded-xl space-y-6 bg-gray-900"
+            >
+              <h2 className="text-xl text-center font-bold">
+                {category.title}
+              </h2>
+              <div className="space-y-4">
+                {category.tools.map((tool, idx) => (
+                  <ListIcon key={idx} title={tool.title} icon={tool.icon} link={tool.link} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     );
-}
-
-export default SectionToolsHelper;
-
-interface ListIconProps {
+  });
+  
+  export default SectionToolsHelper;
+  
+  interface ListIconProps {
     title: string;
     icon: string | null;
     link: string;
-}
-
-function ListIcon({ title, icon, link }: ListIconProps) {
+  }
+  
+  function ListIcon({ title, icon, link }: ListIconProps) {
     return (
-        <a href={link} target="_blank"  className="flex items-center pb-4 justify-between px-4">
-            <div  className="flex items-center gap-6">
-                {icon && <img src={icon} alt={title} />}
-                <h1>{title}</h1>
-            </div>
-            <FaArrowRightLong />
-        </a>
+      <a href={link} target="_blank" className="flex items-center pb-4 justify-between px-4">
+        <div className="flex items-center gap-6">
+          {icon && <img src={icon} alt={title} />}
+          <h1>{title}</h1>
+        </div>
+        <FaArrowRightLong />
+      </a>
     );
-}
+  }

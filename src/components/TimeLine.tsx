@@ -3,11 +3,11 @@ import Button from "./Button";
 import SectionTitle from "./SectionTitle";
 
 function TimeLine() {
-    // State untuk menyimpan konten yang aktif
-    const [activeContent, setActiveContent] = useState("preProposal");
+  
+    const [activeContent, setActiveContent] = useState<"preProposal" | "preSidang" | "preWisuda">("preProposal");
 
-    // Data konten untuk setiap tombol
-    const contentData = {
+   
+    const contentData: { [key in "preProposal" | "preSidang" | "preWisuda"]: { title: string; description?: string }[] } = {
         preProposal: [
             {
                 title: "Mencari Fenomena Skripsi dan Metode Penyelesaian",
@@ -75,6 +75,7 @@ function TimeLine() {
             },
             {
                 title: "Finish - War is over",
+            
             },
         ],
     };
@@ -95,7 +96,7 @@ function TimeLine() {
 
 export default TimeLine;
 
-function SectionTimeLine({ activeContent, setActiveContent }) {
+function SectionTimeLine({ activeContent, setActiveContent }: { activeContent: "preProposal" | "preSidang" | "preWisuda"; setActiveContent: React.Dispatch<React.SetStateAction<"preProposal" | "preSidang" | "preWisuda">> }) {
     return (
         <div className="flex flex-col items-center mb-20">
             <div className="text-center py-14 space-y-6 lg:w-[1051px]">
@@ -133,7 +134,7 @@ function SectionTimeLine({ activeContent, setActiveContent }) {
 
 interface TimelineBlokRightProps {
     title: string;
-    description: string;
+    description?: string;
 }
 
 function TimelineBlokRight({ title, description }: TimelineBlokRightProps) {

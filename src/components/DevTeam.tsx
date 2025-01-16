@@ -23,7 +23,7 @@ function DevTeam() {
         },
         {
             name: 'Dila Aura Futri',
-            role: 'Researcher',
+            role: ' Research and Development',
             imageUrl: ProfilDila,
             github: 'https://github.com/dila',
             linkedin: 'https://linkedin.com/in/dila',
@@ -45,7 +45,7 @@ function DevTeam() {
                     Hidup itu adalah soal dikenali dan diingat seseorang
                 </p>
             </div>
-            <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-36  max-w-[1200px]'>
+            <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-36  '>
                 {teamMembers.map((member, index) => (
                     <div
                         key={index}

@@ -126,12 +126,12 @@ interface ListIconProps {
 
 function ListIcon({ title, icon, link }: ListIconProps) {
     return (
-        <div className="flex items-center pb-4 justify-between px-4">
-            <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-6">
+        <a href={link} target="_blank"  className="flex items-center pb-4 justify-between px-4">
+            <div  className="flex items-center gap-6">
                 {icon && <img src={icon} alt={title} />}
                 <h1>{title}</h1>
-            </a>
+            </div>
             <FaArrowRightLong />
-        </div>
+        </a>
     );
 }

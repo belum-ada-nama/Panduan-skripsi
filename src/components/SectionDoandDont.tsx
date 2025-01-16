@@ -88,7 +88,7 @@ function Container({ tipe, items }: TitledescriptionProps) {
                         {/* Teks untuk judul item */}
                         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{item.title}</h1>
                         {/* Teks untuk deskripsi */}
-                        <p className="text-base sm:text-lg md:text-xl">{item.description}</p>
+                        <p className="text-base sm:text-lg md:text-xl text-gray-400">{item.description}</p>
                     </div>
                 ))}
             </div>

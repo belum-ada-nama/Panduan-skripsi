@@ -134,7 +134,7 @@ interface ListProps {
 function List({ title, link }: ListProps) {
     return (
         <li className="bg-slate-500 rounded-lg p-3 sm:p-6 text-base sm:text-xl md:p-3">
-            <a href={link} className="flex justify-between items-center text-white">
+            <a href={link} target="_blank" className="flex justify-between items-center text-white">
                 {title}
                 <IoIosArrowForward />
             </a>

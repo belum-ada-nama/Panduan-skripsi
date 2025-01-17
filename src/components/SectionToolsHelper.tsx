@@ -90,8 +90,8 @@ interface SectionToolsHelperProps {
  
 const SectionToolsHelper = forwardRef<HTMLDivElement, SectionToolsHelperProps>((_, ref) => {
     return (
-      <div ref={ref} className="w-full pb-20 bg-[#060A16]">
-        <div className="text-center px-6 py-14 space-y-6 lg:w-[1051px] mx-auto">
+      <div ref={ref} className="w-full pb-20 bg-[#060A16] lg:w-[1051px] mx-auto">
+        <div className="text-center px-6 py-14 space-y-6 ">
           <SectionTitle
             title="Tools Helper Skripsi"
             description="Platform atau aplikasi AI yang dirancang untuk membantu mahasiswa dalam menyelesaikan Skripsi dengan lebih efisien dan terorganisir"

@@ -5,7 +5,19 @@ import SectionTitle from "./SectionTitle";
 interface TimeLineProps {
   ref?: React.RefObject<HTMLDivElement>;
 }
+interface SectionTimeLineProps {
+  activeContent: "preProposal" | "preSidang" | "preWisuda";
+  setActiveContent: React.Dispatch<React.SetStateAction<"preProposal" | "preSidang" | "preWisuda">>;
+}
+interface TimelineBlokAkhirProps {
+  title: string;
+  description?: string;
 
+}
+interface TimelineBlokRightProps {
+  title: string;
+  description?: string;
+}
 const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
   const [activeContent, setActiveContent] = useState<"preProposal" | "preSidang" | "preWisuda">("preProposal");
 
@@ -76,20 +88,29 @@ const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
         description: "Menyiapkan materi presentasi, memahami argumen penelitian dan berlatih menjawab pertanyaan dosen penguji",
       },
       {
-        title: "Finish - War is over",
-      },
+        title: "Finish - War is over"
+      }
+
     ],
   };
 
   return (
     <div ref={ref} className="w-full px-6 sm:px-12 lg:px-[118px] bg-[#060A16] text-white pb-60 pt-20">
       <SectionTimeLine activeContent={activeContent} setActiveContent={setActiveContent} />
-      <div className="flex flex-col space-y-12">
-        {contentData[activeContent].map((item, index) => (
+      <div className="flex flex-col space-y-3 lg:space-y-12">
+        {contentData[activeContent].slice(0, contentData[activeContent].length - 1).map((item, index) => (
           <div key={index} className="flex w-full">
             <TimelineBlokRight title={item.title} description={item.description} />
           </div>
         ))}
+
+        {/* Menampilkan hanya item terakhir di dalam TimelineBlokAkhir */}
+        {contentData[activeContent].length > 0 && (
+          <TimelineBlokAkhir
+            title={contentData[activeContent][contentData[activeContent].length - 1].title}
+            description={contentData[activeContent][contentData[activeContent].length - 1].description}
+          />
+        )}
       </div>
     </div>
   );
@@ -97,10 +118,7 @@ const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
 
 export default TimeLine;
 
-interface SectionTimeLineProps {
-  activeContent: "preProposal" | "preSidang" | "preWisuda";
-  setActiveContent: React.Dispatch<React.SetStateAction<"preProposal" | "preSidang" | "preWisuda">>;
-}
+
 
 function SectionTimeLine({ activeContent, setActiveContent }: SectionTimeLineProps) {
   return (
@@ -138,20 +156,44 @@ function SectionTimeLine({ activeContent, setActiveContent }: SectionTimeLinePro
   );
 }
 
-interface TimelineBlokRightProps {
-  title: string;
-  description?: string;
-}
+
 
 function TimelineBlokRight({ title, description }: TimelineBlokRightProps) {
   return (
-    <div className="flex space-x-12 h-auto border-white">
-      <div className="flex flex-col">
+    <div className="flex space-x-12 h-auto border-white ">
+      <div className="flex  flex-col ">
         <div className="relative top-4">
           <div className="w-6 h-6 bg-white rounded-full absolute -top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"></div>
         </div>
-        <div className="w-1 h-auto relative">
-          <div className="w-1 h-[300px] md:[220px] lg:[200px] bg-white absolute top-2"></div>
+        <div className="w-1 h-full relative">
+          <div className="w-1 h-full pb-36 lg:pb-64 bg-white absolute top-6"></div>
+        </div>
+      </div>
+      <div className="h-full flex flex-col justify-between">
+        <div className="space-y-4">
+          <div className="flex space-x-2 items-center">
+            <h1 className="text-xl md:text-3xl lg:text-4xl font-bold">{title}</h1>
+          </div>
+          <div>
+            <p className="text-gray-600 text-base md:text-xl lg:text-2xl">{description}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+function TimelineBlokAkhir({ title, description }: TimelineBlokAkhirProps) {
+  return (
+    <div className="flex space-x-12 h-auto ">
+      <div className="flex  flex-col ">
+        <div className="relative top-4">
+          <div className="w-6 h-6 bg-white rounded-full absolute -top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"></div>
+          <div className="w-1 h-full  relative">
+            <div className="w-1 h-full pb-28 lg:hidden bg-white absolute top-2"></div>
+          </div>
         </div>
       </div>
       <div className="h-full flex flex-col justify-between">

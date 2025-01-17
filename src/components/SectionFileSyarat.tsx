@@ -13,11 +13,11 @@ const berkasData = [
       {
         category: "Dokumen SKPI",
         listSyarat: [
-          "Laporan PKL",
-          "Laporan KKN",
-          "Minimal LoA SCP Riset jika Riset",
-          "Bukti Minimal 10 bulan internship Jika Internship",
-        ],
+          "Minimal 3 SKPI Keahlian (Python, Mikrotik, AI, JS, Database, dsb.)",
+          "Minimal 3 SKPI Umum (TKDA, Public Speaking, English, dsb.)",
+          "Sertifikat Workshop dari Prodi & Luar Prodi",
+          "Sertifikat Seminar Nasional dan Internasional (Prodi & Luar Prodi)",
+        ]
       },
       {
         category: "Dokumen Utama",
@@ -27,14 +27,15 @@ const berkasData = [
           "Lembar persetujuan seminar skripsi",
           "Sample Data (Jika relevan dengan topik skripsi)",
         ],
+
       },
       {
         category: "Dokumen Laporan Kegiatan",
         listSyarat: [
-          "Minimal 3 SKPI Keahlian (Python, Mikrotik, AI, JS, Database, dsb.)",
-          "Minimal 3 SKPI Umum (TKDA, Public Speaking, English, dsb.)",
-          "Sertifikat Workshop dari Prodi & Luar Prodi",
-          "Sertifikat Seminar Nasional dan Internasional (Prodi & Luar Prodi)",
+          "Laporan PKL",
+          "Laporan KKN",
+          "Minimal LoA SCP Riset jika Riset",
+          "Bukti Minimal 10 bulan internship Jika Internship",
         ],
       },
     ],

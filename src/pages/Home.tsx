@@ -7,7 +7,7 @@ import DevTeam from "../components/DevTeam";
 import SectionRecomendedPaper from "../components/SectionRecomendedPaper";
 import SectionDoandDont from "../components/SectionDoandDont";
 import SectionTemplateChat from "../components/SectionTemplateChat";
-import Accordion from "../components/Accordion";
+
 import FaQ from "../components/FaQ";
 
 function Home() {

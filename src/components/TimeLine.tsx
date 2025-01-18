@@ -1,7 +1,39 @@
-import React, { forwardRef, useState } from "react";
-import Button from "./Button";
+import React, { forwardRef, useState, useRef, useEffect } from "react";
 import SectionTitle from "./SectionTitle";
+import Button from "./Button";
 
+// Reusable hook to detect if an element is in the viewport
+function useOnScreen(ref: React.RefObject<HTMLElement>, rootMargin = "0px") {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        rootMargin,
+        threshold: 0.2, // Trigger the animation when 20% of the element is in view
+      }
+    );
+
+    const currentRef = ref.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [ref, rootMargin]);
+
+  return isVisible;
+}
+
+// TimeLine Section Component
 interface TimeLineProps {
   ref?: React.RefObject<HTMLDivElement>;
 }
@@ -9,88 +41,30 @@ interface SectionTimeLineProps {
   activeContent: "preProposal" | "preSidang" | "preWisuda";
   setActiveContent: React.Dispatch<React.SetStateAction<"preProposal" | "preSidang" | "preWisuda">>;
 }
-interface TimelineBlokAkhirProps {
-  title: string;
-  description?: string;
 
-}
-interface TimelineBlokRightProps {
-  title: string;
-  description?: string;
-}
 const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
   const [activeContent, setActiveContent] = useState<"preProposal" | "preSidang" | "preWisuda">("preProposal");
 
   const contentData: { [key in "preProposal" | "preSidang" | "preWisuda"]: { title: string; description?: string }[] } = {
     preProposal: [
-      {
-        title: "Mencari Fenomena Skripsi dan Metode Penyelesaian",
-        description: "Mengidentifikasi topik atau masalah yang relevan untuk penelitian serta metode penyelesaian yang sesuai. Mereview sekurangnya 50 Artikel Ilmiah untuk memahami tren penelitian dan menemukan gap penelitian",
-      },
-      {
-        title: "Menentukan Judul Skripsi",
-        description: "Judul harus mengandung PMR (Public, Method dan Result)",
-      },
-      {
-        title: "Melakukan Bimbingan dan Revisi Proposal (Bebas Dosen)",
-        description: "Sering-seringlah melakukan bimbingan dengan dosen promotor karena the more u learn the more u earn",
-      },
-      {
-        title: "Persiapan Seminar Proposal",
-        description: "Menyiapkan materi presentasi, memahami argumen penelitian dan berlatih menjawab pertanyaan dosen penguji",
-      },
-      {
-        title: "Seminar Proposal",
-        description: "Memaparkan penelitian di depan penguji untuk mendapatkan persetujuan dan masukan. Jangan lupa selalu awali dengan do’a",
-      },
+      { title: "Mencari Fenomena Skripsi dan Metode Penyelesaian", description: "Mengidentifikasi topik atau masalah yang relevan untuk penelitian serta metode penyelesaian yang sesuai." },
+      { title: "Menentukan Judul Skripsi", description: "Judul harus mengandung PMR (Public, Method dan Result)" },
+      { title: "Melakukan Bimbingan dan Revisi Proposal (Bebas Dosen)", description: "Sering-seringlah melakukan bimbingan dengan dosen promotor." },
+      { title: "Persiapan Seminar Proposal", description: "Menyiapkan materi presentasi, memahami argumen penelitian dan berlatih menjawab pertanyaan dosen penguji" },
+      { title: "Seminar Proposal", description: "Memaparkan penelitian di depan penguji untuk mendapatkan persetujuan dan masukan." },
     ],
     preSidang: [
-      {
-        title: "Persiapan Sidang Skripsi",
-        description: "Menyiapkan dokumen dan presentasi untuk sidang skripsi.",
-      },
-      {
-        title: "Melanjutkan Skripsi Bab 4 - 5",
-        description: "Menyusun hasil penelitian dan pembahasan",
-      },
-      {
-        title: "Melakukan Bimbingan dan Revisi Proposal",
-        description: "Menyelesaikan perbaikan bab 4 dan 5",
-      },
-      {
-        title: "Submit Jurnal Minimal Sinta 4",
-        description: "Membuat artikel penelitian dari Skripsi dan mengirimkan artikel penelitian tersebut ke jurnal",
-      },
-      {
-        title: "Sidang",
-        description: "Melaksanakan sidang untuk mempertahankan hasil penelitian",
-      },
+      { title: "Persiapan Sidang Skripsi", description: "Menyiapkan dokumen dan presentasi untuk sidang skripsi." },
+      { title: "Melanjutkan Skripsi Bab 4 - 5", description: "Menyusun hasil penelitian dan pembahasan." },
+      { title: "Melakukan Bimbingan dan Revisi Proposal", description: "Menyelesaikan perbaikan bab 4 dan 5." },
+      { title: "Submit Jurnal Minimal Sinta 4", description: "Membuat artikel penelitian dari Skripsi dan mengirimkan artikel penelitian tersebut ke jurnal." },
+      { title: "Sidang", description: "Melaksanakan sidang untuk mempertahankan hasil penelitian." },
     ],
     preWisuda: [
-      {
-        title: "Revisi Post Sidang",
-        description: "Melakukan perbaikan berdasarkan masukan dari sidang.",
-      },
-      {
-        title: "Pengumpulan Berkas Skripsi",
-        description: "Menyelesaikan semua dokumen administratif",
-      },
-      {
-        title: "Yudisium",
-        description: "Penetapan kelulusan oleh fakultas",
-      },
-      {
-        title: "Melakukan Bimbingan dan Revisi Proposal (Bebas Dosen)",
-        description: "Sering-seringlah melakukan bimbingan dengan dosen promotor karena the more u learn the more u earn",
-      },
-      {
-        title: "Persiapan Seminar Proposal",
-        description: "Menyiapkan materi presentasi, memahami argumen penelitian dan berlatih menjawab pertanyaan dosen penguji",
-      },
-      {
-        title: "Finish - War is over"
-      }
-
+      { title: "Revisi Post Sidang", description: "Melakukan perbaikan berdasarkan masukan dari sidang." },
+      { title: "Pengumpulan Berkas Skripsi", description: "Menyelesaikan semua dokumen administratif." },
+      { title: "Yudisium", description: "Penetapan kelulusan oleh fakultas." },
+      { title: "Finish - War is over" },
     ],
   };
 
@@ -118,8 +92,7 @@ const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
 
 export default TimeLine;
 
-
-
+// SectionTimeLine Component to toggle between timeline stages
 function SectionTimeLine({ activeContent, setActiveContent }: SectionTimeLineProps) {
   return (
     <div className="flex flex-col items-center mb-20 ">
@@ -156,11 +129,21 @@ function SectionTimeLine({ activeContent, setActiveContent }: SectionTimeLinePro
   );
 }
 
+interface TimelineBloks {
+  title: string;
+  description?: string;
+}
 
+// TimelineBlokRight for individual timeline blocks
+function TimelineBlokRight({ title, description }: TimelineBloks) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isVisible = useOnScreen(ref);
 
-function TimelineBlokRight({ title, description }: TimelineBlokRightProps) {
   return (
-    <div className="flex space-x-12 h-auto border-white ">
+    <div
+      ref={ref}
+      className={`flex space-x-12 h-auto border-white transition-all duration-1000 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+    >
       <div className="flex  flex-col ">
         <div className="relative top-4">
           <div className="w-6 h-6 bg-white rounded-full absolute -top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"></div>
@@ -183,11 +166,16 @@ function TimelineBlokRight({ title, description }: TimelineBlokRightProps) {
   );
 }
 
+// TimelineBlokAkhir for the last block in the timeline
+function TimelineBlokAkhir({ title, description }: TimelineBloks) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isVisible = useOnScreen(ref);
 
-
-function TimelineBlokAkhir({ title, description }: TimelineBlokAkhirProps) {
   return (
-    <div className="flex space-x-12 h-auto ">
+    <div
+      ref={ref}
+      className={`flex space-x-12 h-auto transition-all duration-1000 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+    >
       <div className="flex  flex-col ">
         <div className="relative top-4">
           <div className="w-6 h-6 bg-white rounded-full absolute -top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"></div>

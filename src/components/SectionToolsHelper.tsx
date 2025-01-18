@@ -32,7 +32,7 @@ const toolCategories = [
         ],
     },
     {
-        title: "Alat Desain dan Presentasi",
+        title: "Desain dan Presentasi",
         tools: [
             { title: "Figma", icon: IconFigma, link: "https://www.figma.com/" },
             { title: "Eraser.io", icon: IconEraser, link: "https://www.eraser.io/" },
@@ -53,13 +53,13 @@ const toolCategories = [
         ],
     },
     {
-        title: "Untuk Review",
+        title: "Review",
         tools: [
             { title: "Scispace", icon: IconScispace, link: "https://www.scispace.com/" },
         ],
     },
     {
-        title: "Untuk Latar Belakang, Hasil, dan Metodologi (dan bantuan umum penulisan)",
+        title: "Latar Belakang, Hasil, dan Metodologi (dan bantuan umum penulisan)",
         tools: [
             { title: "Claude AI", icon: IconClaude, link: "https://claude.ai/" },
             { title: "Perplexity AI", icon: IconPerplexity, link: "https://www.perplexity.ai/" },
@@ -67,7 +67,7 @@ const toolCategories = [
         ],
     },
     {
-        title: "Alat untuk Pemrograman dan Data Science",
+        title: "Pemrograman dan Data Science",
         tools: [
             { title: "GitHub Copilot", icon: IconGitHubCopilot, link: "https://copilot.github.com/" },
             { title: "Kaggle", icon: IconKaggle, link: "https://www.kaggle.com/" },

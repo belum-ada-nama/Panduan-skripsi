@@ -16,7 +16,7 @@ function DevTeam() {
         },
         {
             name: 'Haldies Gerhardien Pasya',
-            role: 'Frontend Developer',
+            role: 'Web Developer',
             imageUrl: ProfilHaldies,
             github: 'https://github.com/haldies',
             linkedin: 'https://linkedin.com/in/haldies',

@@ -129,9 +129,9 @@ const SectionToolsHelper = forwardRef<HTMLDivElement, SectionToolsHelperProps>((
   
   function ListIcon({ title, icon, link }: ListIconProps) {
     return (
-      <a href={link} target="_blank" className="flex items-center pb-4 justify-between px-4">
+      <a href={link} target="_blank" className="flex  items-center pb-4 justify-between px-4">
         <div className="flex items-center gap-6">
-          {icon && <img src={icon} alt={title} />}
+          {icon && <img className="w-8 h-8 lg:w-14 lg:h-14" src={icon} alt={title} />}
           <h1>{title}</h1>
         </div>
         <FaArrowRightLong />

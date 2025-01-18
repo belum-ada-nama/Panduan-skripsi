@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState, useEffect, useRef } from "react";
 import SectionTitle from "./SectionTitle";
 import AccordionBerkas from "./AccordionBerkas";
 
@@ -86,8 +86,40 @@ const berkasData = [
 ];
 
 const SectionFileSyarat = forwardRef<HTMLDivElement, SectionFileSyaratProps>((_, ref) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Trigger the animation when section is in view
+        }
+      },
+      { threshold: 0.2 } // 20% of the section needs to be visible to trigger
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    // Clean up the observer when the component is unmounted
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div ref={ref} className="flex px-6 flex-col items-center py-[71px]">
+    <div
+      ref={(node) => {
+        sectionRef.current = node;
+        if (ref && 'current' in ref) ref.current = node;
+      }}
+      className={`flex px-6 flex-col items-center py-[71px] transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
       <div className="text-center py-14 space-y-6 lg:w-[1051px]">
         <SectionTitle
           title="Syarat Berkas"

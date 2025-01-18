@@ -59,7 +59,7 @@ const toolCategories = [
         ],
     },
     {
-        title: "Alat untuk Pemrograman dan Data Science",
+        title: "Untuk Latar Belakang, Hasil, dan Metodologi (dan bantuan umum penulisan)",
         tools: [
             { title: "Claude AI", icon: IconClaude, link: "https://claude.ai/" },
             { title: "Perplexity AI", icon: IconPerplexity, link: "https://www.perplexity.ai/" },
@@ -67,7 +67,7 @@ const toolCategories = [
         ],
     },
     {
-        title: "Penyemangat tapi bukan doi",
+        title: "Alat untuk Pemrograman dan Data Science",
         tools: [
             { title: "GitHub Copilot", icon: IconGitHubCopilot, link: "https://copilot.github.com/" },
             { title: "Kaggle", icon: IconKaggle, link: "https://www.kaggle.com/" },

@@ -51,7 +51,7 @@ function SectionDoandDont() {
                 <div className="text-center py-14 space-y-6 lg:w-[1051px]">
                     <SectionTitle
                         title="Do and Don’t"
-                        description="Tetap fokus pada tujuan utamamu. Mempunyai target yang jelas akan membantumu tetap berada di jalur yang benar. Jangan biarkan kegagalan menghentikan langkahmu. Lihat kegagalan sebagai pelajaran, bukan hambatan"
+                        description="Fokus pada tujuanmu dan buat target yang jelas. Anggap kegagalan sebagai pelajaran, bukan hambatan."
                     />
                 </div>
                 <div className="flex flex-col lg:flex-col gap-6">

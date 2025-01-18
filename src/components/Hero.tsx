@@ -25,7 +25,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
       >
         <img src={iconLogo} alt="Logo" className="w-36 h-36" />
         <div className="absolute bottom-0 right-0 p-2 rounded-tl-lg">
-          <span>Sabtu, 13 Januari 2025</span>
+          <span>Sabtu, 18 Januari 2025</span>
         </div>
       </div>
 

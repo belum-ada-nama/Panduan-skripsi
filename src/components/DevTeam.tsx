@@ -41,8 +41,8 @@ function DevTeam() {
         <div className='w-full flex justify-center items-center flex-col p-6 sm:p-10 md:p-12 mt-36'>
             <div className='w-full flex justify-center flex-col items-center space-y-3 text-center'>
                 <h1 className='font-bold text-3xl sm:text-4xl lg:text-2xl'>Dev Team</h1>
-                <p className='italic text-lg sm:text-xl lg:text-xl'>
-                    Hidup itu adalah soal dikenali dan diingat seseorang
+                <p className='text-lg sm:text-xl lg:text-xl'>
+                kami ingin berbagi pengalaman dan memberikan panduan yang berguna untuk membantu kalian menyelesaikan skripsi
                 </p>
             </div>
             <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-36  '>

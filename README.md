@@ -48,3 +48,8 @@ export default tseslint.config({
   },
 })
 ```
+
+npm run build
+git add .
+git commit -m "fix update leaderboard"
+git push origin

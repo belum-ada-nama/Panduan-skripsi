@@ -7,7 +7,7 @@ function LeaderboardPage() {
         { name: 'Teguh', completedChapters: 3 },
         { name: 'Nazar', completedChapters: 3 },
         { name: 'Haldies', completedChapters: 2 },
-        { name: 'Eyo', completedChapters: 2 },
+        { name: 'Eyo', completedChapters: 3 },
       ];
   return (
     <div>

@@ -65,6 +65,13 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
             >
               Tools
             </Button>
+            <Button
+              variant="secondary"
+              size="small"
+              onClick={() => scrollToSection(section2Ref)} 
+            >
+              <a href="/leaderboard">Leaderboard</a>
+            </Button>
           </div>
         </div>
       </div>

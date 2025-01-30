@@ -52,7 +52,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ students }) => {
                 <span className='text-white font-poppins font-semibold'>Update 30 Januari 2025</span>
             </div>
 
-            <h2 className="text-4xl font-bold mb-8 text-white text-center font-poppins animate-bounce">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-8 text-white text-center font-poppins animate-bounce">
                 🏆 Leaderboard Skripsi 🏆
             </h2>
             <div className="w-full max-w-md space-y-4">

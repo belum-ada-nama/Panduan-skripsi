@@ -68,7 +68,6 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
             <Button
               variant="secondary"
               size="small"
-              onClick={() => scrollToSection(section2Ref)} 
             >
               <a href="/leaderboard">Leaderboard</a>
             </Button>

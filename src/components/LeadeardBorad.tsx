@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoIosArrowBack } from 'react-icons/io';
 
 interface Student {
     name: string;
@@ -48,10 +49,10 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ students }) => {
 
     return (
         <div className="p-6 bg-gradient-to-br from-gray-900 to-indigo-900 min-h-screen flex flex-col items-center justify-center">
-            <div className='w-full border-b-2 mb-20 py-2 max-w-md'>
+            <div className='absolute top-6 left-6'><a href="/"><IoIosArrowBack color='white'  size={30}/></a></div>
+            <div className='w-full border-b-2 mb-16 py-2 max-w-md'>
                 <span className='text-white font-poppins font-semibold'>Update 30 Januari 2025</span>
             </div>
-
             <h2 className="text-2xl lg:text-4xl font-bold mb-8 text-white text-center font-poppins animate-bounce">
                 🏆 Leaderboard Skripsi 🏆
             </h2>

@@ -10,7 +10,8 @@ function LeaderboardPage() {
         { name: 'Eyo', completedChapters: 2 },
       ];
   return (
-    <div><Leaderboard students={students} /></div>
+    <div>
+        <Leaderboard students={students} /></div>
   )
 }
 

@@ -54,7 +54,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
             <Button
               variant="primary"
               size="small"
-              onClick={() => scrollToSection(section1Ref)} // Scroll ke SectionFileSyarat
+              onClick={() => scrollToSection(section1Ref)} 
             >
               Road Map
             </Button>

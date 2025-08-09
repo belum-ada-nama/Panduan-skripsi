@@ -40,19 +40,6 @@ const toolCategories = [
         ],
     },
     {
-        title: "Referensi Artikel",
-        tools: [
-            { title: "IEEE", icon: null, link: "https://ieeexplore.ieee.org/" },
-            { title: "Science Direct", icon: null, link: "https://www.sciencedirect.com/" },
-            { title: "Paper With Code", icon: null, link: "https://www.paperwithcode.com/" },
-            { title: "Arxiv", icon: null, link: "https://arxiv.org/" },
-            { title: "Springer", icon: null, link: "https://link.springer.com/" },
-            { title: "Google Scholar", icon: null, link: "https://scholar.google.com/" },
-            { title: "Sage Jurnal", icon: null, link: "https://journals.sagepub.com/" },
-            { title: "Director Of Open Access Journals", icon: null, link: "https://doaj.org/" },
-        ],
-    },
-    {
         title: "Review",
         tools: [
             { title: "Scispace", icon: IconScispace, link: "https://www.scispace.com/" },

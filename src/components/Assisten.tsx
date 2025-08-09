@@ -1,136 +1,102 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-// Import Google Generative AI module
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-// Define your API key
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-
-// Initialize the GoogleGenerativeAI instance
-const genAI = new GoogleGenerativeAI(apiKey);
-
-// Create a model instance (e.g., gemini-1.5-flash)
-const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
-});
-
-// Generation configuration options
-const generationConfig = {
-  temperature: 1,
-  topP: 0.95,
-  topK: 40,
-  maxOutputTokens: 8192,
-  responseMimeType: "text/plain",
-};
-
-// Function to run the API call and get chatbot response
+// Dummy chatbot response for testing UI without API
 async function run(userInput: string) {
-  const parts = [
-    { text: `input: ${userInput}` },
-    { text: "output: " },
-  ];
-
-  try {
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts }],
-      generationConfig,
-    });
-
-    if (result && result.response && result.response.text) {
-      return result.response.text(); // Return the generated response text
-    } else {
-      return "Sorry, I couldn't get a response.";
-    }
-  } catch (error) {
-    console.error("Error generating content:", error);
-    return "Sorry, something went wrong.";
-  }
+  return new Promise<string>((resolve) => {
+    setTimeout(() => {
+      resolve(`**Dummy Bot:** You said _"${userInput}"_.\n\nHere’s a list:\n\n- Item 1\n- Item 2\n- Item 3\n\n\`\`\`ts\n// Example code block\nconst x: number = 42;\n\`\`\``);
+    }, 1000); // Simulate 1s delay
+  });
 }
 
 const ChatButton: React.FC = () => {
   const [showMessage, setShowMessage] = useState(false);
-  const [chatMessage, setChatMessage] = useState<React.ReactNode>("Hi! How can I help you today?");
+  const [chatMessage, setChatMessage] = useState<React.ReactNode>(
+    <p className="text-gray-500">Hi! I'm your dummy chatbot. Ask me anything!</p>
+  );
   const [userInput, setUserInput] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-  // Toggle the visibility of the chat menu/message
   const toggleMessage = () => {
     setShowMessage((prevState) => !prevState);
   };
 
-  // Handle input submission and send it to the chatbot
   const handleUserInput = async () => {
-    if (userInput.trim() === "") return; // Don't send empty input
+    if (userInput.trim() === "") return;
 
-    setChatMessage("Thinking..."); // Display thinking message while processing
+    setLoading(true);
+    setChatMessage(<p className="text-gray-500 italic">Thinking...</p>);
 
-    const response = await run(userInput); // Get response from chatbot
-    setChatMessage(formatResponse(response)); // Format and update the chat message with the response
-    setUserInput(""); // Clear the input field
+    const response = await run(userInput);
+    setChatMessage(formatResponse(response));
+    setUserInput("");
+    setLoading(false);
   };
 
-  // Format the response to display neatly with clear context
   const formatResponse = (response: string) => {
     if (!response) return "Sorry, I couldn't get a response.";
+    return (
+      <div className="prose prose-sm max-w-none text-gray-100">
+        <ReactMarkdown>{response}</ReactMarkdown>
+      </div>
 
-    // Example of handling specific inputs and formatting them more clearly
-    if (response.toLowerCase().includes("hay kak")) {
-      return "Hello! How can I assist you today? 😊";
-    }
-
-    if (response.toLowerCase().includes("instruction")) {
-      return "It seems like you want some help with instructions. Could you please clarify what you're looking for?";
-    }
-
-    // Split the response into paragraphs for better readability
-    const paragraphs = response.split("\n").map((paragraph, index) => (
-      <p key={index} className="mb-2">{paragraph}</p>
-    ));
-
-    return <div>{paragraphs}</div>;
+    );
   };
 
   return (
     <div className="relative">
-      {/* Chat Button */}
+      {/* Floating Chat Button */}
       <button
-        onClick={toggleMessage} // Toggle visibility of the message/chat menu
-        className="fixed bottom-20 right-10 p-4 bg-blue-500 text-white rounded-full shadow-lg z-50 hover:bg-blue-700 transition-all"
+        onClick={toggleMessage}
+        className="fixed bottom-20 right-10 p-4 bg-blue-600 text-white rounded-full shadow-lg z-50 hover:bg-blue-700 transition"
       >
-        Chat
+        💬
       </button>
+
+      {/* Chat Box */}
       <div
-        className={`fixed bottom-20 right-5 w-80 p-4 bg-white border-2 border-gray-300 rounded-lg shadow-lg z-50 transition-all ${
-          showMessage ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-10 invisible'
-        }`}
+        className={`fixed bottom-24 right-5 w-96 p-5 bg-white border border-gray-300 rounded-xl shadow-2xl z-50 transition-all duration-300 ${showMessage ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-10 invisible'
+          }`}
       >
-        <div className="flex justify-between items-center mb-4">
-          <p className="font-bold text-lg">Chatbot</p>
+        {/* Header */}
+        <div className="flex justify-between items-center mb-3">
+          <h2 className="font-semibold text-lg text-gray-800">Chatbot</h2>
           <button
-            onClick={toggleMessage} // Close chat when clicked
-            className="text-gray-500 hover:text-gray-700"
+            onClick={toggleMessage}
+            className="text-gray-400 hover:text-gray-600 text-xl font-bold"
           >
-            X
+            ×
           </button>
         </div>
 
-        <div className="mb-4">
-          {/* Display Chatbot response */}
-          <div>{chatMessage}</div>
+        {/* Chat Output */}
+        <div className="mb-4 max-h-64 overflow-y-auto text-sm space-y-2 bg-gray-50 p-3 rounded ">
+          {chatMessage}
         </div>
 
-        {/* Input area */}
+        {/* Input Field */}
         <input
           type="text"
           value={userInput}
-          onChange={(e) => setUserInput(e.target.value)} // Update user input on change
-          className="w-full p-2 border-2 border-gray-300 rounded-lg"
+          onChange={(e) => setUserInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleUserInput()}
+          className="w-full p-2 border rounded-md text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           placeholder="Type your message..."
+          disabled={loading}
         />
+
+
+
         <button
-          onClick={handleUserInput} // Send user input to chatbot
-          className="w-full mt-2 p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition-all"
+          onClick={handleUserInput}
+          className={`w-full mt-2 p-2 rounded-md transition-all ${loading
+            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            : 'bg-blue-600 text-white hover:bg-blue-700'
+            }`}
+          disabled={loading}
         >
-          Send
+          {loading ? 'Sending...' : 'Send'}
         </button>
       </div>
     </div>

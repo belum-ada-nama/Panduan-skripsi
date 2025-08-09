@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import iconLogo from "../assets/logo.svg";
 import Button from "./Button";
 
+
+
 interface HeroProps {
   scrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
   section1Ref: React.RefObject<HTMLDivElement>; // Terima ref untuk SectionFileSyarat

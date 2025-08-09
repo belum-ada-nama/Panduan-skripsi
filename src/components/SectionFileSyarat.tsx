@@ -41,7 +41,7 @@ const berkasData = [
     ],
   },
   {
-    category: "Seminar Sidang",
+    category: "Sidang",
     data: [
       {
         category: "Dokumen Utama",
@@ -60,8 +60,6 @@ const berkasData = [
           "Surat Penyerahan Buku Sumbangan dari BAU Universitas",
           "Surat Permohonan Sidang",
           "Surat Bebas Pinjaman Buku dari Perpustakaan",
-          "Surat Pengajuan Judul Skripsi",
-          "Surat Penunjukan Dosen Pembimbing Skripsi",
           "Surat Bukti Persetujuan Pembimbing untuk Ujian Sidang di TTD oleh pembimbing",
           "Surat Keterangan Bebas Akademik dan Administrasi",
         ],
@@ -69,16 +67,14 @@ const berkasData = [
       {
         category: "File Skripsi",
         listSyarat: [
-          "Softcopy Foto Berwarna (4x6, 3x4, 2x3)",
+          "Softcopy Foto Berwarna 4x6",
           "Fotocopy Ijazah SLTA yang Dilegalisir",
           "Lembar Persyaratan Sidang (KHS hingga semester akhir)",
           "Formulir Pendaftaran Sidang",
-          "Kartu Bimbingan (minimal 8 kali bimbingan)",
-          "Formulir Revisi Skripsi yang Ditandatangani Pembimbing",
+          "Form Bimbingan (minimal 8 kali bimbingan)",   
           "Hard Cover Skripsi sebanyak 3 Rangkap berwarna biru",
           "CD Berisi Dokumen Skripsi",
           "Jurnal Penelitian Skripsi Minimal Sinta 4",
-          "Manual Book (untuk aplikasi)",
         ],
       },
     ],

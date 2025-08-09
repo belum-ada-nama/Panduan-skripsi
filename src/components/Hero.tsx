@@ -65,12 +65,6 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
             >
               Tools
             </Button>
-            <Button
-              variant="secondary"
-              size="small"
-            >
-              <a href="/leaderboard">Leaderboard</a>
-            </Button>
           </div>
         </div>
       </div>

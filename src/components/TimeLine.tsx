@@ -1,6 +1,6 @@
 import React, { forwardRef, useState, useRef, useEffect } from "react";
 import SectionTitle from "./SectionTitle";
-import Button from "./Button";
+import Button from "./ui/Button";
 
 // Reusable hook to detect if an element is in the viewport
 function useOnScreen(ref: React.RefObject<HTMLElement>, rootMargin = "0px") {

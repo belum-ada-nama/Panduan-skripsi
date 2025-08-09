@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import iconLogo from "../assets/logo.svg";
-import Button from "./Button";
+import Button from "./ui/Button";
 
 
 
@@ -21,9 +21,8 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
     <div className="w-full text-white px-6 sm:px-10 lg:px-20 lg:pb-[186px]">
       {/* Logo Section */}
       <div
-        className={`flex justify-center transition-opacity duration-1000 border-b-2 relative ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className={`flex justify-center transition-opacity duration-1000 border-b-2 relative ${isVisible ? "opacity-100" : "opacity-0"
+          }`}
       >
         <img src={iconLogo} alt="Logo" className="w-36 h-36" />
         <div className="absolute bottom-0 right-0 p-2 rounded-tl-lg">
@@ -33,9 +32,8 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
 
       {/* Main Content Section */}
       <div
-        className={`flex flex-col items-center justify-center lg:space-y-0 transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-        }`}
+        className={`flex flex-col items-center justify-center lg:space-y-0 transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
       >
         <div className="container mx-auto p-4 text-center">
           {/* Title Section */}
@@ -63,7 +61,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
             <Button
               variant="secondary"
               size="small"
-              onClick={() => scrollToSection(section2Ref)} 
+              onClick={() => scrollToSection(section2Ref)}
             >
               Tools
             </Button>

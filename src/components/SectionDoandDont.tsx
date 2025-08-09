@@ -51,7 +51,7 @@ function SectionDoandDont() {
                 <div className="text-center py-14 space-y-6 lg:w-[1051px]">
                     <SectionTitle
                         title="Do and Don’t"
-                        description="Tetap fokus pada tujuan utamamu. Mempunyai target yang jelas akan membantumu tetap berada di jalur yang benar. Jangan biarkan kegagalan menghentikan langkahmu. Lihat kegagalan sebagai pelajaran, bukan hambatan"
+                        description="Fokus pada tujuanmu dan buat target yang jelas. Anggap kegagalan sebagai pelajaran, bukan hambatan."
                     />
                 </div>
                 <div className="flex flex-col lg:flex-col gap-6">
@@ -88,7 +88,7 @@ function Container({ tipe, items }: TitledescriptionProps) {
                         {/* Teks untuk judul item */}
                         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{item.title}</h1>
                         {/* Teks untuk deskripsi */}
-                        <p className="text-base sm:text-lg md:text-xl">{item.description}</p>
+                        <p className="text-base sm:text-lg md:text-xl text-gray-400">{item.description}</p>
                     </div>
                 ))}
             </div>

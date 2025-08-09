@@ -29,7 +29,7 @@ const Accordion: React.FC<AccordionProps> = ({ questions }) => {
               aria-expanded={openIndex === index ? "true" : "false"}
               aria-controls={`accordion-collapse-body-${index + 1}`}
             >
-              <span className="mr-3">{item.question}</span>
+              <span className="text-start mr-6">{item.question}</span>
               <svg
                 data-accordion-icon
                 className={`w-3 h-3 shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""}`}
@@ -58,8 +58,8 @@ const Accordion: React.FC<AccordionProps> = ({ questions }) => {
             }}
             aria-labelledby={`accordion-collapse-heading-${index + 1}`}
           >
-            <div className="p-5  border-t border-gray-200 dark:border-gray-700">
-              <p className="">{item.answer}</p>
+            <div className="p-5  border-t border-gray-200 ">
+              <p className="text-gray-500">{item.answer}</p>
             </div>
           </div>
         </div>

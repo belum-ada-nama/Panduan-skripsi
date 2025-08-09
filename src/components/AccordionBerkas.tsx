@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface AccordionProps {
   syarats: { category: string; listSyarat: string[] };
@@ -25,22 +26,7 @@ const AccordionBerkas: React.FC<AccordionProps> = ({ syarats }) => {
             aria-controls={`accordion-collapse-body`}
           >
             <span className="mr-3">{syarats.category}</span>
-            <svg
-              data-accordion-icon
-              className={`w-3 h-3 shrink-0 transition-transform ${openIndex === 0 ? "rotate-180" : ""}`}
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 5 5 1 1 5"
-              />
-            </svg>
+            <IoIosArrowDown size={24}/>
           </button>
         </h2>
         <div

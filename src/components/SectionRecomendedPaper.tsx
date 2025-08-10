@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import SectionTitle from './SectionTitle';
-import Sinta from '../assets/sinta.svg';
 import { IoIosArrowForward } from 'react-icons/io';
 
 // Data hanya kategori Free

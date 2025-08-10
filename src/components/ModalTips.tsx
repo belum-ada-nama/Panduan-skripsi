@@ -10,7 +10,7 @@ const ModalTips: React.FC<ModalTipsProps> = ({ onClose }) => {
             <div className="bg-white text-black rounded-lg shadow-lg p-6 max-w-md text-center">
                 <h2 className="text-xl font-bold mb-4">🎓 Tips Skripsi</h2>
                 <p className="mb-4">
-                    Skripsi mau selesai itu kuncinya <strong>bimbingan aja terus</strong>. Jangan kena mental "ish pusing", "ish bingung", atau nggak tahu harus mulai dari mana. <strong>Nah itu harus Bimbingan!</strong>
+                    Skripsi mau selesai itu kuncinya <strong>sering bimbingan aja</strong>. Jangan kena mental "ih pusing", "ih bingung", atau nggak tahu harus mulai dari mana. <strong>Nah itu harus Bimbingan!</strong>
                     <span className="text-red-600"> <strong> jangan hilang bimbingan!</strong></span>
                 </p>
                 <button

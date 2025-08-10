@@ -153,7 +153,7 @@ const SectionRecomendedPaper = () => {
 export default SectionRecomendedPaper;
 
 // Container kategori Free
-function Container({ title, description, listPaper }: TitledescriptionProps) {
+function Container({  listPaper }: TitledescriptionProps) {
     const ref = useRef<HTMLDivElement | null>(null);
     const isVisible = useOnScreen(ref);
 
@@ -163,8 +163,7 @@ function Container({ title, description, listPaper }: TitledescriptionProps) {
             className={`w-full sm:w-[385px] md:w-full p-6 bg-slate-900 rounded-3xl space-y-6 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
         >
-            <h1 className="text-center text-2xl sm:text-3xl lg:text-xl font-bold ">{title}</h1>
-            <p className="text-xl sm:text-lg md:text-xl">{description}</p>
+      
             <div className="space-y-6 p-6 bg-black rounded-xl">
                 <ul className="space-y-4 sm:space-y-6">
                     {listPaper.map((paper, index) => (

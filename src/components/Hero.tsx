@@ -6,8 +6,8 @@ import Button from "./ui/Button";
 
 interface HeroProps {
   scrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
-  section1Ref: React.RefObject<HTMLDivElement>; // Terima ref untuk SectionFileSyarat
-  section2Ref: React.RefObject<HTMLDivElement>; // Terima ref untuk SectionToolsHelper
+  section1Ref: React.RefObject<HTMLDivElement>;
+  section2Ref: React.RefObject<HTMLDivElement>;
 }
 
 const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
@@ -26,7 +26,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
       >
         <img src={iconLogo} alt="Logo" className="w-36 h-36" />
         <div className="absolute bottom-0 right-0 p-2 rounded-tl-lg">
-          <span>Sabtu, 18 Januari 2025</span>
+          <span>10 Agustus 2025</span>
         </div>
       </div>
 
@@ -54,7 +54,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
             <Button
               variant="primary"
               size="small"
-              onClick={() => scrollToSection(section1Ref)} 
+              onClick={() => scrollToSection(section1Ref)}
             >
               Road Map
             </Button>

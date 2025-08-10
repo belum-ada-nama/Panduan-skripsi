@@ -14,7 +14,7 @@ const berkasData = [
         category: "Dokumen SKPI",
         listSyarat: [
           "Minimal 3 SKPI Keahlian (Python, Mikrotik, AI, JS, Database, dsb.)",
-          "Minimal 3 SKPI Umum (TKDA, Public Speaking, English, dsb.)",
+          "Minimal 4 SKPI Umum (TKDA, Public Speaking, English, dsb.)",
           "Sertifikat Workshop dari Prodi & Luar Prodi",
           "Sertifikat Seminar Nasional dan Internasional (Prodi & Luar Prodi)",
         ]
@@ -27,16 +27,6 @@ const berkasData = [
           "Lembar persetujuan seminar skripsi",
           "Sample Data (Jika relevan dengan topik skripsi)",
         ],
-
-      },
-      {
-        category: "Dokumen Laporan Kegiatan",
-        listSyarat: [
-          "Laporan PKL",
-          "Laporan KKN",
-          "Minimal LoA SCP Riset jika Riset",
-          "Bukti Minimal 10 bulan internship Jika Internship",
-        ],
       },
     ],
   },
@@ -46,8 +36,6 @@ const berkasData = [
       {
         category: "Dokumen Utama",
         listSyarat: [
-          "Sertifikat Mabim (Masa Bimbingan Mahasiswa)",
-          "Sertifikat Hakrab (Himpunan Akademik atau Organisasi Kemahasiswaan)",
           "4 SKPI Keahlian (Python, Mikrotik, AI, JS, Database, dsb.)",
           "4 SKPI Umum (TKDA, Public Speaking, English, dsb.)",
           "Sertifikat Workshop dari Prodi & Luar Prodi",
@@ -71,7 +59,7 @@ const berkasData = [
           "Fotocopy Ijazah SLTA yang Dilegalisir",
           "Lembar Persyaratan Sidang (KHS hingga semester akhir)",
           "Formulir Pendaftaran Sidang",
-          "Form Bimbingan (minimal 8 kali bimbingan)",   
+          "Form Bimbingan (minimal 8 kali bimbingan)",
           "Hard Cover Skripsi sebanyak 3 Rangkap berwarna biru",
           "CD Berisi Dokumen Skripsi",
           "Jurnal Penelitian Skripsi Minimal Sinta 4",
@@ -90,17 +78,16 @@ const SectionFileSyarat = forwardRef<HTMLDivElement, SectionFileSyaratProps>((_,
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          setIsVisible(true); // Trigger the animation when section is in view
+          setIsVisible(true);
         }
       },
-      { threshold: 0.2 } // 20% of the section needs to be visible to trigger
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    // Clean up the observer when the component is unmounted
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
@@ -114,7 +101,9 @@ const SectionFileSyarat = forwardRef<HTMLDivElement, SectionFileSyaratProps>((_,
         sectionRef.current = node;
         if (ref && 'current' in ref) ref.current = node;
       }}
-      className={`flex px-6 flex-col items-center py-[71px] transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`flex px-6 flex-col items-center py-[71px] transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
     >
       <div className="text-center py-14 space-y-6 lg:w-[1051px]">
         <SectionTitle
@@ -133,6 +122,10 @@ const SectionFileSyarat = forwardRef<HTMLDivElement, SectionFileSyaratProps>((_,
 
 export default SectionFileSyarat;
 
+// =====================
+// ContainerSyarats
+// =====================
+
 interface ContainerSyaratsProps {
   category: {
     category: string;
@@ -141,14 +134,69 @@ interface ContainerSyaratsProps {
 }
 
 function ContainerSyarats({ category }: ContainerSyaratsProps) {
+  const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
+  const [missingItems, setMissingItems] = useState<string[]>([]);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleCheck = (item: string) => {
+    setCheckedItems((prev) => ({ ...prev, [item]: !prev[item] }));
+  };
+
+  const handleCheckRequirements = () => {
+    const allItems = category.data.flatMap((sub) => sub.listSyarat);
+    const missing = allItems.filter((item) => !checkedItems[item]);
+    setMissingItems(missing);
+    setShowPopup(true);
+  };
+
   return (
     <div className="w-full xl:w-[590px] p-6 bg-slate-900 rounded-3xl space-y-6">
-      <h1 className="text-center text-xl font-bold">{category.category}</h1>
+      <h1 className="text-center text-xl font-bold text-white">{category.category}</h1>
       <div className="space-y-6 p-6 bg-black rounded-xl">
         {category.data.map((subCategory) => (
-          <AccordionBerkas key={subCategory.category} syarats={subCategory} />
+          <AccordionBerkas
+            key={subCategory.category}
+            syarats={subCategory}
+            checkedItems={checkedItems}
+            onCheck={handleCheck}
+          />
         ))}
+        <button
+          onClick={handleCheckRequirements}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded mt-4"
+        >
+          Cek Kelengkapan
+        </button>
       </div>
+
+      {/* Modal / Popup */}
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white text-black p-6 rounded-xl max-w-md w-[90%]">
+            <h2 className="text-lg font-bold mb-4">Hasil Pengecekan</h2>
+            {missingItems.length === 0 ? (
+              <p>✅ Semua syarat sudah lengkap!</p>
+            ) : (
+              <>
+                <p className="mb-2">❌ Kamu masih kurang beberapa syarat:</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  {missingItems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <div className="mt-4 text-right">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="bg-gray-800 text-white px-4 py-2 rounded"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

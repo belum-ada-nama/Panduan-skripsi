@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import iconLogo from "../assets/logo.svg";
 import Button from "./ui/Button";
 
-
-
 interface HeroProps {
   scrollToSection: (ref: React.RefObject<HTMLDivElement>) => void;
   section1Ref: React.RefObject<HTMLDivElement>;
@@ -46,7 +44,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
 
           {/* Description */}
           <p className="text-lg sm:text-xl text-gray-300 mt-6">
-            Dibuat untuk membantu mahasiswa karena pahlawan himmel akan melakukan hal yang sama
+            Panduan ini dirancang khusus untuk membantu mahasiswa Teknik Informatika menyelesaikan skripsi secara efektif dan terstruktur. Untuk jurusan lain, berguna untuk rekomendasi penggunaan tools AI, referensi paper, dan berkas-berkas pendukung yang relevan.
           </p>
 
           {/* Button Section */}
@@ -63,7 +61,7 @@ const Hero = ({ scrollToSection, section1Ref, section2Ref }: HeroProps) => {
               size="small"
               onClick={() => scrollToSection(section2Ref)}
             >
-              Tools
+              Tools Ai
             </Button>
           </div>
         </div>

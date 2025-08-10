@@ -3,7 +3,6 @@ import Hero from "../components/Hero";
 import SectionFileSyarat from "../components/SectionFileSyarat";
 import SectionToolsHelper from "../components/SectionToolsHelper";
 import TimeLine from "../components/TimeLine";
-import DevTeam from "../components/DevTeam";
 import SectionRecomendedPaper from "../components/SectionRecomendedPaper";
 import FaQ from "../components/FaQ";
 import ChatButton from "../components/Assisten";
@@ -32,7 +31,7 @@ function Home() {
   return (
     <div className="flex flex-col items-center justify-center bg-[#060A16] text-white font-san-francisco">
       {showTips && <ModalTips onClose={() => setShowTips(false)} />} {/* Modal muncul */}
-      
+
       <Hero
         scrollToSection={scrollToSection}
         section1Ref={section1Ref}
@@ -44,7 +43,6 @@ function Home() {
       <SectionToolsHelper ref={section2Ref} />
       <FaQ />
       <ChatButton />
-      <DevTeam />
     </div>
   );
 }

@@ -1,51 +1,70 @@
+// AccordionBerkas.tsx
 import { useState, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface AccordionProps {
-  syarats: { category: string; listSyarat: string[] };
+  syarats: {
+    category: string;
+    listSyarat: string[];
+  };
+  checkedItems: { [key: string]: boolean };
+  onCheck: (item: string) => void;
 }
 
-const AccordionBerkas: React.FC<AccordionProps> = ({ syarats }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+const AccordionBerkas: React.FC<AccordionProps> = ({ syarats, checkedItems, onCheck }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const handleToggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div id="accordion-collapse" data-accordion="collapse" className="bg-black">
-      <div key={syarats.category} className="bg-gray-700 rounded-xl">
-        <h2 id={`accordion-collapse-heading`}>
-          <button
-            type="button"
-            className="flex items-center justify-between w-full p-5 font-medium hover:underline transition-all"
-            onClick={() => handleToggle(0)} // Toggle dengan index 0 karena hanya satu kategori
-            aria-expanded={openIndex === 0 ? "true" : "false"}
-            aria-controls={`accordion-collapse-body`}
-          >
-            <span className="mr-3">{syarats.category}</span>
-            <IoIosArrowDown size={24}/>
-          </button>
-        </h2>
-        <div
-          id={`accordion-collapse-body`}
-          ref={(el) => contentRefs.current[0] = el}
-          style={{
-            height: openIndex === 0 ? `${contentRefs.current[0]?.scrollHeight}px` : "0px",
-            overflow: "hidden",
-            transition: "height 0.3s ease-in-out",
-          }}
-          aria-labelledby={`accordion-collapse-heading`}
+    <div className="bg-gray-700 rounded-xl">
+      <h2>
+        <button
+          type="button"
+          className="flex items-center justify-between w-full p-5 font-medium text-white hover:underline transition-all"
+          onClick={toggleAccordion}
+          aria-expanded={isOpen}
+          aria-controls={`accordion-body-${syarats.category}`}
         >
-          <div className="p-5 bg-gray-900 rounded-b-lg">
-            <ul>
-              {syarats.listSyarat.map((answer, idx) => (
-                <li key={idx}>{answer}</li>
-              ))}
-            </ul>
-          </div>
+          <span className="mr-3">{syarats.category}</span>
+          <IoIosArrowDown
+            size={24}
+            className={`transform transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          />
+        </button>
+      </h2>
+
+      <div
+        id={`accordion-body-${syarats.category}`}
+        ref={contentRef}
+        style={{
+          height: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px",
+          overflow: "hidden",
+          transition: "height 0.3s ease-in-out",
+        }}
+        aria-labelledby={`accordion-heading-${syarats.category}`}
+      >
+        <div className="p-5 bg-gray-900 rounded-b-lg">
+          <ul className="space-y-2">
+            {syarats.listSyarat.map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <label className="flex items-center cursor-pointer ">
+                  <input
+                    type="checkbox"
+                    checked={!!checkedItems[item]}
+                    onChange={() => onCheck(item)}
+                    className="w-5 h-5 border-2 border-black bg-white rounded-full"
+                  />
+
+                  <span className="ml-5 text-white">{item}</span>
+                </label>
+              </li>
+
+            ))}
+          </ul>
         </div>
       </div>
     </div>
